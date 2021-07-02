@@ -12,6 +12,7 @@ RUN set -ex ;\
 	openssl ca-certificates wget vim
 
 COPY ./srcs/ /tmp/
+RUN chmod -R 755 /tmp/mysql_and_setup.sh
 
 #SSL setup
 RUN mkdir /etc/nginx/ssl && \

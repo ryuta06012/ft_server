@@ -4,7 +4,7 @@ service php7.3-fpm start
 service nginx start
 service mysql start
 
-if [ $AUTO_INDEX = "off" ]; then cat /etc/nginx/sites-available/localhost | sed -ie "s/autoindex on/autoindex off/g" /etc/nginx/sites-available/localhost;fi
+if [ $AUTO_INDEX = "off" ]; then cat /etc/nginx/sites-available/local | sed -ie "s/autoindex on/autoindex off/g" /etc/nginx/sites-available/local;fi
 
 # Config MYSQL
 echo "CREATE DATABASE wpdb;" | mysql -u root --skip-password
