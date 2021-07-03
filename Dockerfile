@@ -15,7 +15,7 @@ COPY ./srcs/ /tmp/
 RUN chmod -R 755 /tmp/mysql_and_setup.sh
 
 #SSL setup
-RUN mkdir /etc/nginx/ssl && \
+RUN mkdir /etc/nginx/ssl && \ 
 	openssl genrsa \
 	-out /etc/nginx/ssl/private.key 2048 && \
 	openssl req \
@@ -39,7 +39,6 @@ RUN wget https://wordpress.org/latest.tar.gz && \
 	cp -r ./wordpress /var/www/html/ && \
 	mv /tmp/wp-config.php /var/www/html/wordpress/
 
-
 # phpmyadmin setup
 WORKDIR /tmp
 RUN wget https://files.phpmyadmin.net/phpMyAdmin/5.1.1/phpMyAdmin-5.1.1-all-languages.tar.gz && \
@@ -54,3 +53,4 @@ RUN chown -R www-data:www-data /var/www/html
 EXPOSE 80 443
 
 ENTRYPOINT /tmp/mysql_and_setup.sh
+CMD	/tmp/mysql_and_setup.sh
